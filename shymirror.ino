@@ -23,22 +23,22 @@
 
 /* tick setup */
 #define TIMER_US 50
-#define TICK_COUNTS 2000 // 2000US/50TICKS = 100 ms
+#define TICK_COUNTS 2000	// 2000US/50TICKS = 100 ms
 
 /* pins */
 #define PIN_SERVO_VERT 7
 #define PIN_SERVO_HOR 8
 #define PIN_DIST_TRIG 4
-#define PIN_DIST_ECHO 2 // interrupt 0 = pin 2
+#define PIN_DIST_ECHO 2		// interrupt 0 = pin 2
 
 #define PIN_RED 3
 #define PIN_BLUE 6
 #define PIN_GREEN 5
 
 /* minimum 600 maximum 2400 */
-const unsigned long MIN_US_JOINT = 1200; 	// bottom
-const unsigned long MAX_US_JOINT = 2400; 	// top
-const unsigned long MIN_US_BASE = 1200; 	// right
+const unsigned long MIN_US_JOINT = 1200;	// bottom
+const unsigned long MAX_US_JOINT = 2400;	// top
+const unsigned long MIN_US_BASE = 1200;		// right
 const unsigned long MAX_US_BASE = 2400;		// left
 const unsigned long DIFF = 500;
 
@@ -72,7 +72,7 @@ bool lockWave = false;
 /* interrupt variables */
 volatile unsigned long echo_start = 0;
 volatile unsigned long echo_end = 0;
-volatile unsigned long distance = 4000; // centimeters
+volatile unsigned long distance = 4000;	// centimeters
 volatile unsigned int triggerTimeCountdown;
 bool interruptState;
 bool interruptActive;
@@ -177,7 +177,7 @@ void stateMachine()
 	float phi = PI*scaledTime/2.0f;
 
 	float wave = abs(pow(sin(phi), 2.0f));			// time-based sine wave
-	float wave_safe = (!lockWave) ? wave : 1.0; 	// does not count back after reaching 1
+	float wave_safe = (!lockWave) ? wave : 1.0;		// does not count back after reaching 1
 	if (!lockWave && wave >= 0.975)					// lock wave when it reaches 1
 	{
 		lockWave = true;
@@ -293,16 +293,6 @@ void triggerPulse()
 void timerIsr()
 {
 	triggerPulse();
-}
-
-// PRINT COLOR (DEBUG)
-void printColor(RGB col)
-{
-	Serial.print(col.r);
-	Serial.print(", ");
-	Serial.print(col.g);
-	Serial.print(", ");
-	Serial.println(col.b);
 }
 
 // BACKGROUND ROUTINE
