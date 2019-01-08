@@ -5,10 +5,10 @@
 /* state enums */
 enum MoodState 
 { 
-    IDLE,
-    SENSITIVE,
-    FEAR,
-    RECOVERY
+	IDLE,
+	SENSITIVE,
+	FEAR,
+	RECOVERY
 };
 enum TriggerState
 {
