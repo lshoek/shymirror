@@ -2,19 +2,11 @@
 	Author: Lesley van Hoek
 */
 
-/* state enums */
-enum MoodState 
+/* Servo Function enum */
+enum ServoType 
 { 
-	IDLE,
-	SENSITIVE,
-	FEAR,
-	RECOVERY
-};
-enum TriggerState
-{
-	WAITING,
-	ACTIVE,
-	INACTIVE
+	BASE,
+	JOINT
 };
 
 /* color struct */
